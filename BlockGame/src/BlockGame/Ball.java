@@ -17,7 +17,6 @@ public class Ball {
 
         if (x < 0 || x > 800 - diameter) xSpeed = -xSpeed;
         if (y < 0) ySpeed = -ySpeed;
-
         if (paddle.intersects(getBounds())) ySpeed = -ySpeed;
 
         for (Block[] row : blocks) {
