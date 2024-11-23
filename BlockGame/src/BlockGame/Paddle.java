@@ -12,8 +12,12 @@ public class Paddle {
 
     public void move(int mouseX) {
         x = mouseX - width / 2;
-        if (x < 0) x = 0;
-        if (x > 800 - width) x = 800 - width;
+        
+        if (x < 0)
+        	x = 0;
+        
+        if (x > 800 - width)
+        	x = 800 - width;
     }
 
     public void draw(Graphics g) {
@@ -21,8 +25,5 @@ public class Paddle {
         g.fillRect(x, y, width, height);
     }
 
-    public Rectangle getBounds() {
-        return new Rectangle(x, y, width, height);
-    }
+    public Rectangle getBounds() { return new Rectangle(x, y, width, height); }
 }
-

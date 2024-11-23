@@ -23,15 +23,9 @@ public class Block {
         }
     }
 
-    public Rectangle getBounds() {
-        return new Rectangle(x, y, width, height);
-    }
+    public Rectangle getBounds() { return new Rectangle(x, y, width, height); }
 
-    public boolean isVisible() {
-        return isVisible;
-    }
+    public boolean isVisible() { return isVisible; }
 
-    public void setVisible(boolean visible) {
-        isVisible = visible;
-    }
+    public void setVisible(boolean visible) { isVisible = visible; }
 }

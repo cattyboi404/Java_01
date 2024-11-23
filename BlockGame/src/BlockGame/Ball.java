@@ -15,23 +15,19 @@ public class Ball {
         x += xSpeed;
         y += ySpeed;
 
-        if (x < 0 || x > 800 - diameter) xSpeed = -xSpeed;
-        if (y < 0) ySpeed = -ySpeed;
-        if (paddle.intersects(getBounds())) ySpeed = -ySpeed;
+        if (x < 0 || x > 800 - diameter)
+        	xSpeed = -xSpeed;
+        
+        if (y < 0)
+        	ySpeed = -ySpeed;
 
-        for (Block[] row : blocks) {
-            for (Block block : row) {
-                if (block.isVisible() && block.getBounds().intersects(getBounds())) {
-                    block.setVisible(false);
-                    ySpeed = -ySpeed;
-                    return;
-                }
-            }
-        }
+        if (paddle.intersects(getBounds()))
+        	ySpeed = -ySpeed;
     }
-    public Rectangle getBounds() {
-        return new Rectangle(x, y, diameter, diameter);
-    }
+
+    public void reverseYSpeed() { ySpeed = -ySpeed; }
+
+    public Rectangle getBounds() { return new Rectangle(x, y, diameter, diameter); }
 
     public void draw(Graphics g) {
         g.setColor(Color.BLUE);
