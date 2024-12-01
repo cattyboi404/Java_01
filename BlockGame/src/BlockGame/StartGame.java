@@ -2,13 +2,11 @@ package BlockGame;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class StartGame extends JPanel implements ActionListener {
-    private JFrame parentFrame;
+public class StartGame extends JPanel {
+    private Main parentFrame;
 
-    public StartGame(JFrame parentFrame) {
+    public StartGame(Main parentFrame) {
         this.parentFrame = parentFrame;
 
         setLayout(new GridBagLayout());
@@ -25,25 +23,21 @@ public class StartGame extends JPanel implements ActionListener {
         gbc.gridy = 0;
         add(titleLabel, gbc);
 
-        JButton startButton = new JButton("Game Start");
-        startButton.setFont(new Font("Arial", Font.PLAIN, 24));
-        startButton.addActionListener(this);
+        JButton startButton = createStyledButton("Game Start");
+        startButton.addActionListener(e -> parentFrame.switchToPanel(new GamePanel(parentFrame)));
         gbc.gridy = 1;
         add(startButton, gbc);
 
-        JButton helpButton = new JButton("How to play");
-        helpButton.setFont(new Font("Arial", Font.PLAIN, 24));
+        JButton helpButton = createStyledButton("How to play");
         helpButton.addActionListener(e -> showHelpDialog());
         gbc.gridy = 2;
         add(helpButton, gbc);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        parentFrame.getContentPane().removeAll();
-        parentFrame.add(new GamePanel());
-        parentFrame.revalidate();
-        parentFrame.repaint();
+    private JButton createStyledButton(String text) {
+        JButton button = new JButton(text);
+        button.setFont(new Font("Arial", Font.PLAIN, 24));
+        return button;
     }
 
     private void showHelpDialog() {
